@@ -14,7 +14,7 @@ class Sample(BaseModel):
 
 with open('paper_dataset.json') as f:
     raw_data = json.load(f)
-    data = [Sample.parse_obj(d) for d in raw_data]
+    data = [Sample.model_validate(d) for d in raw_data]
 
 print("First query: ", data[0].query)
 print("First paper of first query: ", data[0].papers[0].title)
